@@ -1,24 +1,45 @@
 // var hour9 = $('#h9')
 // // var try2 = $('#svbtn')
 // var save = $('#hour-9')
-var hour9 = localStorage.getItem('9th')
-var saveButton = document.querySelector('#hour-9 > button')
+var datesnstuf = document.querySelector('#dates')
+var saveButton9 = document.querySelector('#hour-9 > button')
+var saveButton10 = document.querySelector('#hour-10 > button')
+var saveButton11 = document.querySelector('#hour-11 > button')
 var h9txt = document.querySelector('#hour-9 > textarea')
+var h10txt = document.querySelector('#hour-10 > textarea')
+var h11txt = document.querySelector('#hour-11 > textarea')
 
-h9txt.value = localStorage.getItem('hour9')
-
-
-saveButton.addEventListener('click', function(event) {
+h9txt.value = localStorage.getItem('hour-9')
+h10txt.value = localStorage.getItem('hour-10')
+h11txt.value = localStorage.getItem('hour-11')
+var dt = new Date();
+document.querySelector('#dates').innerHTML=dt.toLocaleString('en-us', {  weekday: 'long' });
+console.log(datesnstuf)
+var saveFunction = function(event) {
   event.preventDefault();
-  var h9txt = document.querySelector('#hour-9 > textarea')
+  var clickedRow = event.target.parentElement.id
+  var htxt = document.querySelector(`#${clickedRow} > textarea`)
 console.log('button clicked')
 // save to local Storage
-localStorage.setItem('hour9', h9txt.value)
+localStorage.setItem(clickedRow, htxt.value)
 console.log('item set')
 // display local storage on load 
-console.log(localStorage)
-});
+console.log(event.target.parentElement.id)
+}
 
+saveButton9.addEventListener('click', saveFunction);
+saveButton10.addEventListener('click', saveFunction);
+saveButton11.addEventListener('click', saveFunction);
+
+
+
+var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+console.log(dt.getDay);
+
+console.log(dt.toLocaleString('en-us', {  weekday: 'long' }));
+
+// in dates put ^
+// 
 
 
 
