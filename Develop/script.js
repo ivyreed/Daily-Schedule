@@ -25,6 +25,8 @@ localStorage.setItem(clickedRow, htxt.value)
 console.log('item set')
 // display local storage on load 
 console.log(event.target.parentElement.id)
+  console.log("hi");
+  document.body.innerHTML = "";
 }
 
 saveButton9.addEventListener('click', saveFunction);
@@ -32,10 +34,22 @@ saveButton10.addEventListener('click', saveFunction);
 saveButton11.addEventListener('click', saveFunction);
 
 
-
-var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
-console.log(dt.getDay);
-
+//change class based on time
+var time = dt.getHours()
+var checktime =function(str) {
+  
+  var rowHour = Number(str.substring(5))
+  console.log(rowHour)
+  if(rowHour < time)
+    document.getElementById(str).classList.add('past');
+  else if(rowHour === time)
+    document.getElementById(str).classList.add('present');
+  else if(rowHour > time)
+    document.getElementById(str).classList.add('future');
+}
+checktime('hour-9');
+checktime('hour-10');
+checktime('hour-11');
 console.log(dt.toLocaleString('en-us', {  weekday: 'long' }));
 
 // in dates put ^
