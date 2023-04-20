@@ -1,45 +1,62 @@
-// var hour9 = $('#h9')
-// // var try2 = $('#svbtn')
-// var save = $('#hour-9')
+//time variables
 var datesnstuf = document.querySelector('#dates')
+var dt = new Date();
+//save variables
 var saveButton9 = document.querySelector('#hour-9 > button')
 var saveButton10 = document.querySelector('#hour-10 > button')
 var saveButton11 = document.querySelector('#hour-11 > button')
+var saveButton12 = document.querySelector('#hour-12 > button')
+var saveButton13 = document.querySelector('#hour-13 > button')
+var saveButton14 = document.querySelector('#hour-14 > button')
+var saveButton15 = document.querySelector('#hour-15 > button')
+var saveButton16 = document.querySelector('#hour-16 > button')
+var saveButton17 = document.querySelector('#hour-17 > button')
+//text-box variables
 var h9txt = document.querySelector('#hour-9 > textarea')
 var h10txt = document.querySelector('#hour-10 > textarea')
 var h11txt = document.querySelector('#hour-11 > textarea')
-
+var h12txt = document.querySelector('#hour-12 > textarea')
+var h13txt = document.querySelector('#hour-13 > textarea')
+var h14txt = document.querySelector('#hour-14 > textarea')
+var h15txt = document.querySelector('#hour-15 > textarea')
+var h16txt = document.querySelector('#hour-16 > textarea')
+var h17txt = document.querySelector('#hour-17 > textarea')
+//Loads local storage of text-boxes on startup or refresh
 h9txt.value = localStorage.getItem('hour-9')
 h10txt.value = localStorage.getItem('hour-10')
 h11txt.value = localStorage.getItem('hour-11')
-var dt = new Date();
-document.querySelector('#dates').innerHTML=dt.toLocaleString('en-us', {  weekday: 'long' });
-console.log(datesnstuf)
+h12txt.value = localStorage.getItem('hour-12')
+h13txt.value = localStorage.getItem('hour-13')
+h14txt.value = localStorage.getItem('hour-14')
+h15txt.value = localStorage.getItem('hour-15')
+h16txt.value = localStorage.getItem('hour-16')
+h17txt.value = localStorage.getItem('hour-17')
+//function that saves text-box content
 var saveFunction = function(event) {
   event.preventDefault();
-  var clickedRow = event.target.parentElement.id
+  var clickedRow = $(this).parent().attr('id')
   var htxt = document.querySelector(`#${clickedRow} > textarea`)
-console.log('button clicked')
-// save to local Storage
 localStorage.setItem(clickedRow, htxt.value)
-console.log('item set')
-// display local storage on load 
-console.log(event.target.parentElement.id)
-  console.log("hi");
-  document.body.innerHTML = "";
+document.querySelector('#storage-alert').innerHTML=('✔️ Saved to local storage!')
 }
-
+//runs function upon hitting save button
 saveButton9.addEventListener('click', saveFunction);
 saveButton10.addEventListener('click', saveFunction);
 saveButton11.addEventListener('click', saveFunction);
+saveButton12.addEventListener('click', saveFunction);
+saveButton13.addEventListener('click', saveFunction);
+saveButton14.addEventListener('click', saveFunction);
+saveButton15.addEventListener('click', saveFunction);
+saveButton16.addEventListener('click', saveFunction);
+saveButton17.addEventListener('click', saveFunction);
+//date is displayed on screen
+document.querySelector('#dates').innerHTML=(dt.toLocaleString('en-us', {  weekday: 'long' })) + ', ' + (dt.toLocaleString('default', { month: 'long' }) + ' ' + (dt.toLocaleString('default', { day: "numeric" })));
 
 
 //change class based on time
-var time = dt.getHours()
 var checktime =function(str) {
-  
+  var time = dt.getHours()
   var rowHour = Number(str.substring(5))
-  console.log(rowHour)
   if(rowHour < time)
     document.getElementById(str).classList.add('past');
   else if(rowHour === time)
@@ -47,55 +64,13 @@ var checktime =function(str) {
   else if(rowHour > time)
     document.getElementById(str).classList.add('future');
 }
+//runs function on startup or refresh
 checktime('hour-9');
 checktime('hour-10');
 checktime('hour-11');
-console.log(dt.toLocaleString('en-us', {  weekday: 'long' }));
-
-// in dates put ^
-// 
-
-
-
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-
-// function SaveAndPlace(event) {
-//   event.preventDefault();
-//     console.log('function running')
-
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-
-
-// var stufftodo = $('input[name="h9"]').val();
-
-// if (!stufftodo) {
-//   console.log('Nothing here!');
-//   return;
-// }
-
-// hour9.append('<li>' + stufftodo + '</li>')
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-// };
-// try2.on('click', SaveAndPlace(), console.log('button also exists'));
-// save.on('click', SaveAndPlace, console.log('button exists'));
-
+checktime('hour-12');
+checktime('hour-13');
+checktime('hour-14');
+checktime('hour-15');
+checktime('hour-16');
+checktime('hour-17');
