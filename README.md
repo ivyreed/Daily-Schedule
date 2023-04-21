@@ -14,7 +14,7 @@ Type the item into the desired hour's text-box then click on the save button cor
 
 ## Credits
 
-Starting code was gathered from (https://github.com/coding-boot-camp/work-day-planner)
+Starting code was gathered from (https://github.com/coding-boot-camp/crispy-octo-meme)
 
 ## License
 
