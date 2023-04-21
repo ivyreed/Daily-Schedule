@@ -26,7 +26,7 @@ These links will take you to the application itself
 https://ivyreed.github.io/Daily-Schedule/
 
 This is a screenshot of the running application
-![the display should show as follows.](./assets/day-scheduler.png)
+![the display should show as follows.](./Assets/day-scheduler.png)
 
 ## Features
 
